@@ -1,5 +1,7 @@
 {
   "name": "atelibel",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }
