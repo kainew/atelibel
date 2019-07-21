@@ -3,7 +3,17 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+
+  firebase: {
+    apiKey: "AIzaSyCM5uGBj-6yAPiWWuTVco5k-vBvp42xQf4",
+    authDomain: "atelibel-dev.firebaseapp.com",
+    databaseURL: "https://atelibel-dev.firebaseio.com",
+    projectId: "atelibel-dev",
+    storageBucket: "",
+    messagingSenderId: "59155317119",
+    appId: "1:59155317119:web:8ff79d29c4ba1ff5"
+  }
 };
 
 /*
