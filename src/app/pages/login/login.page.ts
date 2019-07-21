@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { IonSlides } from '@ionic/angular';
+import { IonSlides, LoadingController, ToastController } from '@ionic/angular';
 import { User } from 'src/app/interfaces/user';
+import { AuthService } from 'src/app/services/auth.service';
 import { Keyboard } from '@ionic-native/keyboard/ngx';
 
 @Component({
@@ -14,8 +15,14 @@ export class LoginPage implements OnInit {
   private wavesDifference: number = 100;
   public userLogin: User = {};
   public userRegister: User = {};
+  private loading: any;
 
-  constructor(public keyboard: Keyboard) { }
+  constructor(
+    private authService: AuthService,
+    private loadingCtrl: LoadingController,
+    private toastCtrl: ToastController,
+    public keyboard: Keyboard
+  ) { }
 
   ngOnInit() { }
 
@@ -29,7 +36,37 @@ export class LoginPage implements OnInit {
     }
   }
 
-  register() {
-    console.log(this.userRegister);
+  async login() {
+    await this.presentLoading();
+
+    try {
+      await this.authService.login(this.userLogin);
+    } catch (error) {
+      this.presentToast(error.message);
+    } finally {
+      this.loading.dismiss();
+    }
+  }
+
+  async register() {
+    await this.presentLoading();
+
+    try {
+      await this.authService.register(this.userRegister);
+    } catch (error) {
+      this.presentToast(error.message);
+    } finally {
+      this.loading.dismiss();
+    }
+  }
+
+  async presentLoading() {
+    this.loading = await this.loadingCtrl.create({ message: 'Aguarde...' });
+    return this.loading.present();
+  }
+
+  async presentToast(message: string) {
+    const toast = await this.toastCtrl.create({ message, duration: 2000 });
+    toast.present();
   }
 }
