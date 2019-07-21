@@ -18,13 +18,12 @@ export class LoginPage implements OnInit {
   }
 
   segmentChanged(event: any) {
-  if (event.detail.value === 'login') {
-    this.slides.slidePrev();
-    this.wavesPosition += this.wavesDifference;
-  } else {
-    this.slides.slideNext();
-    this.wavesPosition -= this.wavesDifference;
+    if (event.detail.value === 'login') {
+      this.slides.slidePrev();
+      this.wavesPosition += this.wavesDifference;
+    } else {
+      this.slides.slideNext();
+      this.wavesPosition -= this.wavesDifference;
+    }
   }
-}
-
 }

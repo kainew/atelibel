@@ -1,11 +1,12 @@
 <ion-content class="swiper-no-swiping">
   <div class="container top" [hidden]="keyboard.isVisible">
     <img class="logo" src="/assets/img/logo.png">
-    <ion-segment (ionChange)="segmentChanged($event)" value="login">
-      <ion-segment-button value="login">
+
+    <ion-segment (ionChange)="segmentChanged($event)" mode="ios" value="login">
+      <ion-segment-button mode="ios" value="login">
         <ion-label>Login</ion-label>
       </ion-segment-button>
-      <ion-segment-button value="register">
+      <ion-segment-button mode="ios" value="register">
         <ion-label>Cadastro</ion-label>
       </ion-segment-button>
     </ion-segment>
