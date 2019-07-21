@@ -13,6 +13,8 @@ import { AngularFireModule } from '@angular/fire';
 import { environment } from 'src/environments/environment';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 
+import { DBMeter } from '@ionic-native/db-meter/ngx';
+
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
