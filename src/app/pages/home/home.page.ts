@@ -8,14 +8,17 @@ import { DBMeter } from '@ionic-native/db-meter/ngx';
   providers: [DBMeter]
 })
 export class HomePage implements OnInit {
+  public db_meter;
+
   constructor(
     private dbMeter: DBMeter
   ) { }
 
   ngOnInit() {
-    // Start listening
-    let subscription = this.dbMeter.start().subscribe(
-      data => console.log(data)
-    );
+    let timer = setInterval(() => {
+      let subscription = this.dbMeter.start().subscribe(
+          data => this.db_meter = data
+      );
+    }, 100);
   }
 }
